@@ -1,0 +1,59 @@
+import 'package:flutter/material.dart';
+import 'package:to_do_list/src/core/presentation/designsystem/app_colors.dart';
+import 'package:to_do_list/src/core/presentation/designsystem/widgets/custom_icon_button.dart';
+import 'package:to_do_list/src/data/to_do.dart';
+import 'package:to_do_list/src/data/to_do_type.dart';
+
+class ToDoItem extends StatelessWidget {
+  final ToDo item;
+
+  const ToDoItem({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
+
+  Color getCardColor(ToDoType type, BuildContext context) {
+  switch (type) {
+    case ToDoType.income:
+      return green10; // Color para ingresos
+    case ToDoType.expense:
+      return darkRed5; // Color para gastos
+    default:
+      return gray; // Color por defecto
+  }
+}
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: getCardColor(item.type, context),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Text(
+                  item.title,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.background,
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w500
+                  ),
+                ),
+                const Spacer(),
+                CustomIconButton(
+                  foregroundColor: Theme.of(context).colorScheme.tertiary,
+                  iconData: Icons.delete,
+                  onPressed: () {}
+                )
+              ],
+            ),
+            Text(item.description, style: TextStyle(color: Theme.of(context).colorScheme.background)),
+          ],
+        ),
+      ),
+    );
+  }
+}

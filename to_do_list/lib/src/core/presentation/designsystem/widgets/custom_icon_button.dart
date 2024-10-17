@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CustomFAB extends StatelessWidget {
-  final Color backgroundColor;
+class CustomIconButton extends StatelessWidget {
   final Color foregroundColor;
   final IconData iconData;
   final VoidCallback onPressed;
 
-  const CustomFAB({
+  const CustomIconButton({
     Key? key,
-    required this.backgroundColor,
     required this.foregroundColor,
     required this.iconData,
     required this.onPressed
@@ -16,14 +14,12 @@ class CustomFAB extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return FloatingActionButton(
+    return IconButton(
       onPressed: onPressed,
-      backgroundColor: backgroundColor,
-      foregroundColor: foregroundColor,
-      shape: const CircleBorder(),
-      child: Icon(iconData),
-      );
+      icon: Icon(
+        iconData,
+        color: foregroundColor,
+      ),
+    );
   }
-  
 }
