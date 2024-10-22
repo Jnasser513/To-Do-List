@@ -40,6 +40,6 @@ class ToDoProvider with ChangeNotifier {
   }
 
   double get balance {
-    return totalIncome + totalExpenses;
+    return totalIncome - totalExpenses;
   }
 }

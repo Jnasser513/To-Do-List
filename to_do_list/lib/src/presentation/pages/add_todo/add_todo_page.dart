@@ -164,7 +164,7 @@ class _AddToDoState extends State<AddToDoPage> {
                       toDoProvider.addToDoToList(newToDo);
                       Navigator.pop(context);
                     },
-                    child: const Text('Agregar Tarea'),
+                    child: const Text('Agregar Transacción'),
                   ),
                 ),
             ],
