@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:to_do_list/src/core/presentation/designsystem/app_colors.dart';
 import 'package:to_do_list/src/core/presentation/designsystem/widgets/custom_icon_button.dart';
 import 'package:to_do_list/src/data/to_do.dart';
 import 'package:to_do_list/src/data/to_do_type.dart';
+import 'package:to_do_list/src/presentation/provider/to_do_provider.dart';
 
 class ToDoItem extends StatelessWidget {
   final ToDo item;
@@ -13,15 +15,15 @@ class ToDoItem extends StatelessWidget {
   }) : super(key: key);
 
   Color getCardColor(ToDoType type, BuildContext context) {
-  switch (type) {
-    case ToDoType.income:
-      return green10; // Color para ingresos
-    case ToDoType.expense:
-      return darkRed5; // Color para gastos
-    default:
-      return gray; // Color por defecto
+    switch (type) {
+      case ToDoType.income:
+        return green10;
+      case ToDoType.expense:
+        return darkRed5;
+      default:
+        return gray;
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,10 @@ class ToDoItem extends StatelessWidget {
                 CustomIconButton(
                   foregroundColor: Theme.of(context).colorScheme.tertiary,
                   iconData: Icons.delete,
-                  onPressed: () {}
+                  onPressed: () {
+                    final toDoProvider = Provider.of<ToDoProvider>(context, listen: false);
+                    toDoProvider.removeToDoFromList(item.id);
+                  }
                 )
               ],
             ),

@@ -16,12 +16,12 @@ class ToDoProvider with ChangeNotifier {
     });
   }
 
-  void addNewWishList(ToDo item) {
+  void addToDoToList(ToDo item) {
     ToDoDatabase.db.insertTransaction(item);
     fetchTodoList();
   }
 
-  void removeFromWishList(int id) {
+  void removeToDoFromList(int id) {
     ToDoDatabase.db.deleteTransaction(id);
     fetchTodoList();
   }

@@ -46,12 +46,12 @@ class _HomePageState extends State<HomePage> {
             title: 'Tarea de ejemplo',
             description: 'Descripción de la tarea de ejemplo',
             amount: 100.70,
-            type: ToDoType.expense
+            type: ToDoType.income
           );
 
           // Insertar el nuevo ToDo en la base de datos
           final toDoProvider = Provider.of<ToDoProvider>(context, listen: false);
-          toDoProvider.addNewWishList(newTodo);
+          toDoProvider.addToDoToList(newTodo);
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
