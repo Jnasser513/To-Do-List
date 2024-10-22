@@ -35,27 +35,44 @@ class ToDoItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  item.title,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.background,
-                    fontSize: 20.0,
-                    fontWeight: FontWeight.w500
+                Flexible(
+                  child: Text(
+                    item.title,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.background,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
                   ),
                 ),
-                const Spacer(),
                 CustomIconButton(
                   foregroundColor: Theme.of(context).colorScheme.tertiary,
                   iconData: Icons.delete,
                   onPressed: () {
                     final toDoProvider = Provider.of<ToDoProvider>(context, listen: false);
                     toDoProvider.removeToDoFromList(item.id);
-                  }
-                )
+                  },
+                ),
               ],
             ),
-            Text(item.description, style: TextStyle(color: Theme.of(context).colorScheme.background)),
+            Text(
+              item.description,
+              style: TextStyle(color: Theme.of(context).colorScheme.background),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 2,
+            ),
+            Text(
+              'Monto: ${item.amount}',
+              style: TextStyle(color: Theme.of(context).colorScheme.background),
+            ),
+            Text(
+              'Fecha: ${item.date}',
+              style: TextStyle(color: Theme.of(context).colorScheme.background),
+            )
           ],
         ),
       ),
