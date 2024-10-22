@@ -20,10 +20,16 @@ HomeContent({
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.end,
-            children: List.generate(todoList.length, (index) => ToDoItem(item: todoList[index])),
+            children: List.generate(todoList.length, (index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0), // Ajusta el margen según tus necesidades
+                child: ToDoItem(item: todoList[index]),
+              );
+            }),
           ),
-          ),
+        ),
       );
     });
   }
+
 }
