@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list/src/core/presentation/designsystem/theme_provider.dart';
-import 'package:to_do_list/src/presentation/pages/home_page.dart';
+import 'package:to_do_list/src/presentation/pages/add_todo/add_todo_page.dart';
+import 'package:to_do_list/src/presentation/pages/home/home_page.dart';
 import 'package:to_do_list/src/presentation/provider/to_do_provider.dart';
 
 void main() {
@@ -24,7 +25,8 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: 'home',
       routes: {
-        'home' : (BuildContext context) => const HomePage()
+        'home' : (BuildContext context) => const HomePage(),
+        'add_to_do': (BuildContext context) => const AddToDoPage()
       },
       ),
     );

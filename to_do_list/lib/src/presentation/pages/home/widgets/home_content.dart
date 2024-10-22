@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:to_do_list/src/data/to_do.dart';
-import 'package:to_do_list/src/data/to_do_type.dart';
-import 'package:to_do_list/src/presentation/pages/widgets/to_do_item.dart';
+import 'package:to_do_list/src/presentation/pages/home/widgets/to_do_item.dart';
 
 class HomeContent extends StatelessWidget {
   List<ToDo> todoList;
