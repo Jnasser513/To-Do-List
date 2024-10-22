@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do_list/src/core/presentation/designsystem/widgets/custom_fab.dart';
-import 'package:to_do_list/src/data/to_do_type.dart';
-import 'package:to_do_list/src/presentation/pages/widgets/home_content.dart';
+import 'package:to_do_list/src/presentation/pages/home/widgets/home_content.dart';
 import 'package:to_do_list/src/presentation/provider/to_do_provider.dart';
-import 'package:to_do_list/src/data/to_do.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,7 +27,7 @@ class _HomePageState extends State<HomePage> {
           builder: (context, toDoProvider, child) {
             final todoList = toDoProvider.todoList;
             if (todoList.isEmpty) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
             return HomeContent(todoList: todoList);
           },
@@ -37,21 +35,10 @@ class _HomePageState extends State<HomePage> {
       ),
       floatingActionButton: CustomFAB(
         backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Theme.of(context).colorScheme.onSurface,
+        foregroundColor: Theme.of(context).colorScheme.background,
         iconData: Icons.add,
         onPressed: () {
-          // Crear un ToDo "quemado"
-          final newTodo = ToDo(
-            id: DateTime.now().millisecondsSinceEpoch,
-            title: 'Tarea de ejemplo',
-            description: 'Descripción de la tarea de ejemplo',
-            amount: 100.70,
-            type: ToDoType.income
-          );
-
-          // Insertar el nuevo ToDo en la base de datos
-          final toDoProvider = Provider.of<ToDoProvider>(context, listen: false);
-          toDoProvider.addToDoToList(newTodo);
+          Navigator.of(context).pushNamed('add_to_do');
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
