@@ -14,7 +14,29 @@ class ToDo {
     required this.description,
     required this.amount,
     ToDoType? type,
-  })  : type = type ?? ToDoType.income, // Valor predeterminado
-        date = DateTime.now().toIso8601String();
+    String? date,
+  })  : type = type ?? ToDoType.income,
+        date = date ?? DateTime.now().toIso8601String();
 
+  factory ToDo.fromMap(Map<String, dynamic> map) {
+    return ToDo(
+      id: map['id'],
+      title: map['title'],
+      description: map['description'],
+      amount: map['amount'],
+      type: ToDoType.values[map['type']], 
+      date: map['date'],
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'description': description,
+      'amount': amount,
+      'type': type.index,
+      'date': date,
+    };
+  }
 }
