@@ -1,0 +1,4 @@
+enum ToDoType {
+  income,
+  expense
+}
